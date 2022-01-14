@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		html, body{
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			background-color: #000000;
+			color: #c2c2c2;
+			font-family: monospace;
+			font-size: 16px;
+		}
+
+		.content {
+			
+		}
+
+		.userlist {
+			background-color: #2f2f2f;
+			position: absolute;
+			padding: 0.5rem;
+			padding-right: 0;
+			right: 0;
+			top: 0;
+			bottom: 4rem;
+			overflow-y: auto;
+		}
+		
+		.userlist ul{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			width: 9rem;
+		}
+		
+		.userlist ul li{
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			margin-bottom: 0.1rem;
+			cursor: pointer;
+		}
+		.userlist ul li:hover{
+			color: #00c9c9;
+		}
+		.footer {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			height: 4rem;
+			border-top: 1px solid #c2c2c2;
+		}
+
+		#inp_msg{
+			margin: 0;
+			border: 0;
+			resize: none;
+			width: 100%;
+			padding: 0;
+			height: 100%;
+			background: transparent;
+			color: #c2c2c2;
+			font-size: 1rem;
+			outline: 0;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="content"> we </div>
+		<nav class="userlist">
+		  <ul>
+			<li>User lungooooooooooooooo1</li>
+			<li>User lungooooooooooo1</li>
+			<li>User lungooooo1</li>
+			<li  role="img text" alt="User lungoooooissolinssimooooooooooooooooooo1" aria-label="User lungoooooissolinssimooooooooooooooooooo1">User lungoooooissolinssimooooooooooooooooooo1</li>
+			<li>User2</li>
+			<li>ugo</li>
+			<li>il buon vecchio sergio</li>
+			<li>IlSignoreDioTuo</li>
+			<li>ugo2</li>
+			
+		  </ul>
+		</nav>
+		<div class="footer">
+			<textarea id="inp_msg">
+
+			</textarea>
+		</div>
+	</div>
+	
+	<script>	  
+		let ws = new WebSocket('wss://127.0.0.1:1110');
+		//console.log(ws);
+		//ask('rromlist').then(sgddh)
+
+		ws.onopen = (ev) => {
+			console.log('ws online!');
+		};
+		
+		ws.onmessage = (msg) => {
+			console.log( msg );
+			switch(msg.data){
+				case 'helo':
+					ws.send('roomlist');
+					break;
+			}
+		};
+
+	</script>
+
+</body>
+</html>
